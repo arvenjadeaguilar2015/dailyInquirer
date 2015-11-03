@@ -1,0 +1,49 @@
+<div class="page-header">
+	<h1>Top Stories</h1>
+</div>
+
+<div>
+	<div>
+		<div class="dropdown col-sm-2">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    {{category}} Category
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li data-ng-repeat="category in categories"><a ng-click="changeCategory(category)">{{category}}</a></li>
+			    
+			  </ul>
+		</div>
+		
+		<table data-ng-if="!loading" class="table table-bordered table-striped">
+			<tbody>
+				<tr data-ng-repeat="item in data.results">
+					<td>
+						
+						<div class="row col-sm-12">
+						  <div data-ng-if="item.multimedia[1].url" class="col-xs-3 col-md-3">
+						    <a href="#" class="thumbnail">
+						      <img src="{{item.multimedia[1].url}}" alt="...">
+						    </a>
+						  </div>
+						  <h2><a href="{{item.url}}" target="_blank">{{item.title}}</a></h2>
+						  <h4>Section:{{item.section}}</h4>
+						  <h6>Publish: {{item.published_date | date:'yyyy MMM dd' }}</h6>
+						  <h6>Authored {{item.byline}}</h6>
+						  {{item.abstract}}
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		
+	</div>
+	
+
+</div>
+
+<div data-ng-if="loading" align="center" style="margin-top:25%; font-size:5em;">
+			Loading....
+	</div>
